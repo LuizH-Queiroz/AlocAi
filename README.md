@@ -1,18 +1,14 @@
 # AlocAi
 
+Um projeto revolucionário do time:
+- CAMILA EDUARDO COSTA DE VASCONCELOS
+- LUCAS FARIAS DE MEDEIROS
+- LUERSON DE ALBUQUERQUE SILVA FILHO
+- LUIZ HENRIQUE QUEIROZ DE ALBUQUERQUE SILVA
+- MAURO COIMBRA BARRETO COSTA NETO
+
 
 ## Diagrama de Casos de Uso
-
-<p>
-  Um projeto revolucionário do time:
-  <li>
-    <ul>CAMILA EDUARDO COSTA DE VASCONCELOS</ul>
-    <ul>LUCAS FARIAS DE MEDEIROS</ul>
-    <ul>LUERSON DE ALBUQUERQUE SILVA FILHO</ul>
-    <ul>LUIZ HENRIQUE QUEIROZ DE ALBUQUERQUE SILVA</ul>
-    <ul>MAURO COIMBRA BARRETO COSTA NETO</ul>
-  </li>
-</p>
 
 <p align="center">
   <img src="docs/casosdeuso.png" alt="Diagrama de Casos de Uso" width="400">
