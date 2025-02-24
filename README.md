@@ -8,6 +8,15 @@ Um projeto revolucionário do time:
 - MAURO COIMBRA BARRETO COSTA NETO
 
 
+## Como executar
+
+Certifique-se de ter o Python instalado, assim como as dependências necessárias
+
+Para rodar o projeto, execute o seguinte comando no terminal:
+```bash
+python src/main.py
+```
+
 ## Diagrama de Casos de Uso
 
 <p align="center">

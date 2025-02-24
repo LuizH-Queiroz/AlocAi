@@ -1,25 +1,42 @@
-import os
 import time
 
-def clear_sleep(t=0.5):
-  os.system('cls' if os.name == 'nt' else 'clear')
-  time.sleep(t)
+from ControleCadastro import ControleCadastro
+from utils import clear_sleep
 
-os.system('cls' if os.name == 'nt' else 'clear')
-print("\nBem vindo ao AlocAI!")
+controle = ControleCadastro()
+
 while True:
   clear_sleep()
-  print("""\nBem vindo ao AlocAI!"
+
+  print("""Bem vindo ao AlocAI!
 \nSelecione a opção desejada:
 1- Listar funcionários
 2- Cadastrar funcionário
 3- Sair do sistema""")
+  
   try:
+    # Valida se o input é um número inteiro
     opcao = int(input("Opção: "))
   except ValueError as e:
-    print("\nOpção inválida. Tente novamente.")
+    print("\nOpção inválida, por favor digite apenas o número da opção desejada", end="\n\n")
+    time.sleep(2)
     continue
   
-  if opcao == 3:
+  if opcao == 1:
+    clear_sleep()
+    print("Lista de funcionários", end="\n\n")
+    controle.listar_funcionarios()
+    input('Pressione "ENTER" para continuar')
+
+  elif opcao == 2:
+    clear_sleep()
+    print("Cadastro de funcionário", end="\n\n")
+    controle.cadastrar_funcionario()
+
+  elif opcao == 3:
     print("\nObrigado por usar nosso sistema!", end="\n\n")
     break
+
+  else:
+    print("\nOpção inválida, por favor selecione uma das opções do menu", end="\n\n")
+    time.sleep(2)
