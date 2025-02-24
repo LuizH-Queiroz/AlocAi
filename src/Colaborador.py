@@ -1,5 +1,4 @@
 class Colaborador:
-  def __init__(self, nome, idade, genero):
-    self.nome = nome
-    self.idade = idade
-    self.genero = genero
+  def __init__(self, nome, numeroRegistro):
+    self.nome           = nome
+    self.numeroRegistro = numeroRegistro

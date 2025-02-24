@@ -26,7 +26,7 @@ while True:
     clear_sleep()
     print("Lista de funcionários", end="\n\n")
     controle.listar_colaboradores()
-    input('Pressione "ENTER" para continuar')
+    input('\nPressione "ENTER" para continuar')
 
   elif opcao == 2:
     clear_sleep()

@@ -3,15 +3,19 @@ from Colaborador import Colaborador
 class ControleCadastro:
     def __init__(self):
       # Inicia com esses funcionários para demonstração
-      self.colaboradors = [Colaborador("João", 25, "M"), Colaborador("Maria", 30, "F")]
+      self.colaboradores = [
+        Colaborador("João", 27456),
+        Colaborador("Maria", 14149)
+      ]
     
     def listar_colaboradores(self):
-      for colaborador in self.colaboradors:
-        print(f"Nome: {colaborador.nome}\nIdade: {colaborador.idade}\nGênero: {colaborador.genero}\n")
+      for colaborador in self.colaboradores:
+        print() # Linha em branco antes do registro do colaborador
+        print(f"Nome: {colaborador.nome}")
+        print(f"Número de Registro: {colaborador.numeroRegistro}")
     
     def cadastrar_colaborador(self):
-       nome = input("Nome: ")
-       idade = input("Idade: ")
-       genero = input("Genero (M/F): ")
-       self.colaboradors.append(Colaborador(nome, idade, genero))
-       print("\nFuncionário cadastrado com sucesso")
+      nome = input("Nome: ")
+      numeroRegistro = input("Número de Registro: ")
+      self.colaboradores.append(Colaborador(nome, numeroRegistro))
+      print("\nColaborador cadastrado com sucesso")
