@@ -25,13 +25,13 @@ while True:
   if opcao == 1:
     clear_sleep()
     print("Lista de funcionários", end="\n\n")
-    controle.listar_funcionarios()
+    controle.listar_colaboradores()
     input('Pressione "ENTER" para continuar')
 
   elif opcao == 2:
     clear_sleep()
     print("Cadastro de funcionário", end="\n\n")
-    controle.cadastrar_funcionario()
+    controle.cadastrar_colaborador()
 
   elif opcao == 3:
     print("\nObrigado por usar nosso sistema!", end="\n\n")
