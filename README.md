@@ -14,7 +14,7 @@ Certifique-se de ter o Python instalado, assim como as dependências necessária
 
 Para rodar o projeto, execute o seguinte comando no terminal:
 ```bash
-python src/main.py
+python src/CadastroFuncionario.py
 ```
 
 ## Diagrama de Casos de Uso
