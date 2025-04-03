@@ -18,9 +18,5 @@ class EscalaDAO(ABC):
         pass
 
     @abstractmethod
-    def readAll(self) -> List[Escala]:
-        pass
-
-    @abstractmethod
     def update(self, id: int, escala: Escala):
         pass

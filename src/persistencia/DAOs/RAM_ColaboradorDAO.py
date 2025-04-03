@@ -1,27 +1,51 @@
 from entidades.Colaborador import Colaborador
 from interfaces.ColaboradorDAO import ColaboradorDAO
 from typing import List
+import copy
 
 
 class RAM_ColaboradorDAO(ColaboradorDAO):
-    _instancia = None
+    _instancia      = None
+    _inicializado   = False
     
     def __new__(cls):
         if cls._instancia is None:
-            cls._instancia = super().__new__(cls)  # Cria uma unica instancia
+            cls._instancia      = super().__new__(cls)  # Cria uma unica instancia
         return cls._instancia
+    
+    def __init__(self):
+        if not self._inicializado:
+            self._inicializado = True
+
+            self._colaboradores = []
 
     def create(self, colaborador: Colaborador):
-        pass
+        for colab in self._colaboradores:
+            if colab.getId() == colaborador.getId():
+                raise Exception(f'Já existe colabordor com id {colab.getId()}!')
+
+        self._colaboradores.append(copy.deepcopy(colaborador))
 
     def delete(self, id: int):
-        pass
+        self._colaboradores = [
+            colaborador for colaborador in self._colaboradores
+            if colaborador.getId() != id
+        ]
 
     def read(self, id: int) -> Colaborador:
-        pass
+        for colab in self._colaboradores:
+            if colab.getId() == id:
+                return copy.deepcopy(colab)
+
+        raise Exception(f'Não existe colaborador com id {id}')
 
     def readAll(self) -> List[Colaborador]:
-        pass
+        return copy.deepcopy(self._colaboradores)
 
     def update(self, id: int, colaborador: Colaborador):
-        pass
+        for colab in self._colaboradores:
+            if colab.getId() == id:
+                colab = copy.deepcopy(colaborador)
+                return
+
+        raise Exception(f'Não existe colaborador com id {id}')
