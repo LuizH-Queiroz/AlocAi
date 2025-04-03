@@ -1,6 +1,4 @@
 from DAOFactories.DAOFactory import DAOFactory
-from entidades.Escala import Escala
-from typing import List
 
 
 class EscalaRepository:
@@ -21,14 +19,14 @@ class EscalaRepository:
             self._escalaDAO = self._daoFactory.getEscalaDAO()
 
 
-    def createEscala(self, escala: Escala):
+    def createEscala(self, escala):
         self._escalaDAO.create(escala)
 
     def deleteEscala(self):
         self._escalaDAO.delete()
 
-    def readEscala(self) -> Escala:
+    def readEscala(self):
         return self._escalaDAO.read()
 
-    def updateEscala(self, novosDados: Escala):
+    def updateEscala(self, novosDados):
         self._escalaDAO.update(novosDados)

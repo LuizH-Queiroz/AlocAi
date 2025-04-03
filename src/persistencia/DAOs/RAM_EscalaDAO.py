@@ -1,6 +1,5 @@
 from entidades.Escala import Escala
 from interfaces.EscalaDAO import EscalaDAO
-from typing import List
 import copy
 
 

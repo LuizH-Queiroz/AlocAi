@@ -1,12 +1,10 @@
 from abc import ABC, abstractmethod
-from entidades.Escala import Escala
-from typing import List
 
 # Interface para implementação dos DAOs relativos a Escala
 class EscalaDAO(ABC):
 
     @abstractmethod
-    def create(self, escala: Escala):
+    def create(self, escala):
         pass
 
     @abstractmethod
@@ -14,9 +12,13 @@ class EscalaDAO(ABC):
         pass
 
     @abstractmethod
-    def read(self, id: int) -> Escala:
+    def read(self, id: int):
         pass
 
     @abstractmethod
-    def update(self, id: int, escala: Escala):
+    def readAll(self):
+        pass
+
+    @abstractmethod
+    def update(self, id: int, escala):
         pass

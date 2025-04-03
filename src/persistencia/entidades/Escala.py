@@ -1,12 +1,11 @@
 from entidades.Turno import DiaSemana, HoraDia
-from entidades.Colaborador import Colaborador
 from utils.Validador import Validador
 from typing import Dict, Tuple, List
 
 
 class Escala:
 
-    def __init__(self, colaboradores: List[Colaborador]):
+    def __init__(self, colaboradores):
         self._gerarTurnos()
         self._colaboradores = colaboradores
         self._atribuirColaboradorTurno()
@@ -15,7 +14,7 @@ class Escala:
     
 
     # getters
-    def getColaboradores(self) -> List[Colaborador]:
+    def getColaboradores(self):
         return self._colaboradores
 
     def getTurnos(self) -> Dict[Tuple[DiaSemana, HoraDia], List[int]]:

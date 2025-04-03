@@ -1,6 +1,4 @@
 from DAOFactories.DAOFactory import DAOFactory
-from entidades.Colaborador import Colaborador
-from typing import List
 
 
 class ColaboradorRepository:
@@ -21,17 +19,17 @@ class ColaboradorRepository:
             self._colaboradorDAO    = self._daoFactory.getColaboradorDAO()
             
 
-    def createColaborador(self, colaborador: Colaborador):
+    def createColaborador(self, colaborador):
         self._colaboradorDAO.create(colaborador)
 
     def deleteColaborador(self, id: int):
         self._colaboradorDAO.delete(id)
 
-    def readColaborador(self, id: int) -> Colaborador:
+    def readColaborador(self, id: int):
         return self._colaboradorDAO.read(id)
 
-    def readAllColaborador(self) -> List[Colaborador]:
+    def readAllColaborador(self):
         return self._colaboradorDAO.readAll()
 
-    def updateColaborador(self, id: int, novosDados: Colaborador):
+    def updateColaborador(self, id: int, novosDados):
         self._colaboradorDAO.update(id, novosDados)

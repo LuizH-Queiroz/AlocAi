@@ -1,5 +1,3 @@
-from entidades.Colaborador import Colaborador
-from entidades.Escala import Escala
 from entidades.Turno import DiaSemana, HoraDia
 from typing import Dict, Tuple, List
 
@@ -9,7 +7,7 @@ MAX_CARACTERES_NOME_COLABORADOR = 100
 
 class Validador:
 
-    def validarColaborador(self, colaborador: Colaborador) -> bool:
+    def validarColaborador(self, colaborador) -> bool:
         if not isinstance(colaborador.getId(), int):
             return False
 
@@ -26,8 +24,8 @@ class Validador:
         return True
 
 
-    def validarEscala(self, escala: Escala) -> bool:
-        if not isinstance(escala.getColaboradores(), List[Colaborador]):
+    def validarEscala(self, escala) -> bool:
+        if not isinstance(escala.getColaboradores(), List):
             return False
     
         if not isinstance(

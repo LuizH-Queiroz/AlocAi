@@ -1,12 +1,11 @@
 from abc import ABC, abstractmethod
-from entidades.Colaborador import Colaborador
-from typing import List
+
 
 # Interface para implementação dos DAOs relativos a Colaborador
 class ColaboradorDAO(ABC):
 
     @abstractmethod
-    def create(self, colaborador: Colaborador):
+    def create(self, colaborador):
         pass
 
     @abstractmethod
@@ -14,13 +13,13 @@ class ColaboradorDAO(ABC):
         pass
 
     @abstractmethod
-    def read(self, id: int) -> Colaborador:
+    def read(self, id: int):
         pass
 
     @abstractmethod
-    def readAll(self) -> List[Colaborador]:
+    def readAll(self):
         pass
 
     @abstractmethod
-    def update(self, id: int, colaborador: Colaborador):
+    def update(self, id: int, colaborador):
         pass
