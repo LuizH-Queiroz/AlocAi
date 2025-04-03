@@ -1,7 +1,3 @@
-from entidades.Turno import DiaSemana, HoraDia
-from typing import Dict, Tuple, List
-
-
 MAX_CARACTERES_NOME_COLABORADOR = 100
 
 
@@ -25,13 +21,7 @@ class Validador:
 
 
     def validarEscala(self, escala) -> bool:
-        if not isinstance(escala.getColaboradores(), List):
+        if not isinstance(escala.getColaboradores(), list):
             return False
     
-        if not isinstance(
-            escala.getTurnos(),
-            Dict[Tuple[DiaSemana, HoraDia], List[int]]
-        ):
-            return False
-
         return True
