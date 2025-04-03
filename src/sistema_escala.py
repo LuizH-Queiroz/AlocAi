@@ -1,35 +1,39 @@
-from src.solvers import AdapterFactory
+from src.persistencia.persistenciaFactories.PersistenciaFactory import PersistenciaFactory
+from src.persistencia.repositorios import ColaboradorRepository, EscalaRepository
+from src.relatorio.RelaorioTemplate import RelatorioTemplate
+from src.solvers.AdapterFactory import AdapterFactory
 
 
 class SistemaEscala:
     
     def __init__(self):
-        # ui_factory = UiFactory
-        adapter_factory = AdapterFactory()
-        # persistencia_factory = PersistenciaFactory()
+        # UI_factory = UiFactory
+        self.adapter_factory = AdapterFactory()
+        self.persistencia_factory = PersistenciaFactory()
         # template_factory = TemplateFactory()
-        # repositorio_colaborador = ColaboradorRepository()
-        # relatorio_template = RelatorioTemplate()
-        # repositorio_escala = EscalaRepository()
+        
+        self.repositorio_colaborador = self.persistencia_factory.getColaboradorRepository()
+        self.relatorio_template = RelatorioTemplate()
+        self.repositorio_escala = self.persistencia_factory.getEscalaRepository()
         # UI_show = UIInterface()
-        # solver = Solver()
+        self.solver_adapter = self.adapter_factory.generateSolverAdapterMIP()
 
-    # def runSystem(self):
-    #     while(True):
-    #         choice = input('Escolha que tela você deseja visualizar\nOpções: Main, Escala e CC\n--> ')
+    def runSystem(self):
+        while(True):
+            choice = input('Escolha que tela você deseja visualizar\nOpções: Main, Escala e CC\n--> ')
 
-    #         match choice.lower():
-    #             case 'main':
-    #                 tela = UI_show.generateMainUI()
-    #             case 'escala':
-    #                 tela = UI_show.generateEscalaUI()
-    #             case 'cc':
-    #                 tela = UI_show.generateCCUI()
-    #             case _:
-    #                 print('Tela não existente!')
-    #                 continue
+            match choice.lower():
+                case 'main':
+                    tela = self.UI_show.generateMainUI()
+                case 'escala':
+                    tela = self.UI_show.generateEscalaUI()
+                case 'cc':
+                    tela = self.UI_show.generateCCUI()
+                case _:
+                    print('Tela não existente!')
+                    continue
 
-    #         tela.show()
+            tela.show()
 
-    # def gerarRelatorio(self):
-    #     relatorio_template.gerarRelatorio()
+    def gerarRelatorio(self):
+        self.relatorio_template.gerarRelatorio()
