@@ -26,18 +26,21 @@ class Colaborador:
 
     # setters
     def setId(self, id: int):
-        temp = copy.copy(self)
+        temp = copy.deepcopy(self)
         temp._id = id
         temp._validar()
 
         self.id = id
 
     def setNome(self, nome: str):
-        temp = copy.copy(self)
+        temp = copy.deepcopy(self)
         temp._nome = nome
         temp._validar()
 
         self.nome = nome
+    
+    def setTurnos(self, turnos: List[Turno]):
+        self._turnos = copy.deepcopy(turnos)
 
 
     # outros metodos (privados)
