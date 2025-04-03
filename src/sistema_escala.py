@@ -29,7 +29,7 @@ class SistemaEscala:
     #                 print('Tela não existente!')
     #                 continue
 
-    #             tela.show()
+    #         tela.show()
 
     # def gerarRelatorio(self):
     #     relatorio_template.gerarRelatorio()
