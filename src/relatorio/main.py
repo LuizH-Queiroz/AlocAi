@@ -1,4 +1,4 @@
-from RelatorioFactory import RelatorioFactory
+from .RelatorioFactory import RelatorioFactory
 
 # SÓ PARA TESTAR
 

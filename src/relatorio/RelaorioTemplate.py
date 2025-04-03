@@ -4,16 +4,18 @@ from persistencia.DAOs.RAM_EscalaDAO import RAM_EscalaDAO
 
 class RelatorioTemplate(ABC):
     def gerar_relatorio(self):
-        colaboradores = self.get_colaboradores()
-        escala = self.get_escala_geral()
-        self.imprime_relatorio(colaboradores, escala)
-
-    def get_colaboradores(self, dao_colaboradores: RAM_ColaboradorDAO):
-        return dao_colaboradores.readAll()
-
-    def get_escala_geral(self, dao_escala: RAM_EscalaDAO):
-        return dao_escala.read()
+        colaboradores = self._get_colaboradores(RAM_ColaboradorDAO())
+        escala = self._get_escala_geral(RAM_EscalaDAO())
+        self._imprime_relatorio(colaboradores, escala)
 
     @abstractmethod
-    def imprime_relatorio(self, colaboradores, escala):
+    def _get_colaboradores(self, dao_colaboradores: RAM_ColaboradorDAO):
+        pass
+
+    @abstractmethod
+    def _get_escala_geral(self, dao_escala: RAM_EscalaDAO):
+        pass
+
+    @abstractmethod
+    def _imprime_relatorio(self, colaboradores, escala):
         pass
