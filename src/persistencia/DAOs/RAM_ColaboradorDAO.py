@@ -1,5 +1,5 @@
-from entidades.Colaborador import Colaborador
-from interfaces.ColaboradorDAO import ColaboradorDAO
+from ..entidades.Colaborador import Colaborador
+from ..interfaces.ColaboradorDAO import ColaboradorDAO
 from typing import List
 import copy
 

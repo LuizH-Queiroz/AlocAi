@@ -1,5 +1,5 @@
-from utils.Validador import Validador
-from entidades.Turno import Turno
+from ..utils.Validador import Validador
+from ..entidades.Turno import Turno
 from typing import List
 import copy
 

@@ -1,5 +1,5 @@
-from entidades.Turno import DiaSemana, HoraDia
-from utils.Validador import Validador
+from ..entidades.Turno import DiaSemana, HoraDia
+from ..utils.Validador import Validador
 from typing import Dict, Tuple, List
 
 

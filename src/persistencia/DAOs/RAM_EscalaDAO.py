@@ -1,5 +1,5 @@
-from entidades.Escala import Escala
-from interfaces.EscalaDAO import EscalaDAO
+from ..entidades.Escala import Escala
+from ..interfaces.EscalaDAO import EscalaDAO
 import copy
 
 
