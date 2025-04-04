@@ -1,6 +1,5 @@
 # src/ui/MainWindowUI.py
 from .UIInterface import UIInterface
-from .UIFactory import UIFactory
 
 class MainWindowUI(UIInterface):
     def show(self):

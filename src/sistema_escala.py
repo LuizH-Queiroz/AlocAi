@@ -3,7 +3,6 @@ from relatorio.RelatorioFactory import RelatorioFactory
 from solvers.AdapterFactory import AdapterFactory
 from ui.UIFactory import UIFactory
 
-
 class SistemaEscala:
     
     def __init__(self):        
@@ -31,6 +30,7 @@ class SistemaEscala:
                     continue
 
             tela.show()
+            print('\n')
 
     def gerarRelatorio(self):
         self.relatorio_template.gerar_relatorio()
