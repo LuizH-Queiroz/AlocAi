@@ -1,5 +1,5 @@
 from persistencia.persistenciaFactories.PersistenciaFactory import PersistenciaFactory
-from relatorio.RelaorioTemplate import RelatorioTemplate
+from relatorio.RelatorioFactory import RelatorioFactory
 from solvers.AdapterFactory import AdapterFactory
 
 
@@ -8,9 +8,9 @@ class SistemaEscala:
     def __init__(self):
         # template_factory = TemplateFactory()
         
-        self.repositorio_colaborador = PersistenciaFactory.getColaboradorRepository()
-        self.relatorio_template = RelatorioTemplate()
-        self.repositorio_escala = PersistenciaFactory.getEscalaRepository()
+        self.repositorio_colaborador = PersistenciaFactory().getColaboradorRepository()
+        self.relatorio_template = RelatorioFactory().generate_relatorio_CSV()
+        self.repositorio_escala = PersistenciaFactory().getEscalaRepository()
         # UI_show = UIInterface()
         self.solver_adapter = AdapterFactory.generateSolverAdapterMIP()
 
@@ -33,3 +33,6 @@ class SistemaEscala:
 
     def gerarRelatorio(self):
         self.relatorio_template.gerarRelatorio()
+    
+sistema = SistemaEscala()
+sistema.runSystem()
