@@ -1,5 +1,5 @@
-from DAOs.RAM_ColaboradorDAO import RAM_ColaboradorDAO
-from DAOs.RAM_EscalaDAO import RAM_EscalaDAO
+from ..DAOs.RAM_ColaboradorDAO import RAM_ColaboradorDAO
+from ..DAOs.RAM_EscalaDAO import RAM_EscalaDAO
 
 # Factory para instanciação das DAOs:
 # - EscalaDAO

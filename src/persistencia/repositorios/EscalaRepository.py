@@ -1,4 +1,4 @@
-from DAOFactories.DAOFactory import DAOFactory
+from ..DAOFactories.DAOFactory import DAOFactory
 
 
 class EscalaRepository:

@@ -1,6 +1,6 @@
-from src.persistencia.persistenciaFactories.PersistenciaFactory import PersistenciaFactory
-from src.relatorio.RelaorioTemplate import RelatorioTemplate
-from src.solvers.AdapterFactory import AdapterFactory
+from persistencia.persistenciaFactories.PersistenciaFactory import PersistenciaFactory
+from relatorio.RelaorioTemplate import RelatorioTemplate
+from solvers.AdapterFactory import AdapterFactory
 
 
 class SistemaEscala:

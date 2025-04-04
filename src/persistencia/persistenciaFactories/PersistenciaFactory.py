@@ -1,5 +1,5 @@
-from repositorios.ColaboradorRepository import ColaboradorRepository
-from repositorios.EscalaRepository import EscalaRepository
+from ..repositorios.ColaboradorRepository import ColaboradorRepository
+from ..repositorios.EscalaRepository import EscalaRepository
 
 
 class PersistenciaFactory:
