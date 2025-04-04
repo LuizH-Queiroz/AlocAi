@@ -1,6 +1,6 @@
 # src/ui/MainWindowUI.py
 from .UIInterface import UIInterface
-
+from .UIFactory import UIFactory
 
 class MainWindowUI(UIInterface):
     def show(self):
@@ -13,9 +13,9 @@ class MainWindowUI(UIInterface):
             escolha = input("Escolha uma opção: ")
 
             if escolha == '1':
-                self.adicionar_colaborador()
+                print("Exibindo a interface de Cadastro de Colaborador")
             elif escolha == '2':
-                self.ver_escala()
+                print("Exibindo a interface de Escala")
             elif escolha == '3':
                 print("Saindo do sistema...")
                 break
