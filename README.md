@@ -10,11 +10,11 @@ Um projeto revolucionário do time:
 
 ## Como executar
 
-Certifique-se de ter o Python instalado, assim como as dependências necessárias
+Certifique-se de ter o Python instalado, assim como as dependências necessárias.
 
 Para rodar o projeto, execute o seguinte comando no terminal:
 ```bash
-python src/CadastroFuncionario.py
+python3 src/sistema_escala.py
 ```
 
 ## Diagrama de Casos de Uso
@@ -26,6 +26,6 @@ python src/CadastroFuncionario.py
 ## Diagrama de Classes
 
 <p align="center">
-  <img src="docs/classes.png" alt="Diagrama de Classes" width="400">
+  <img src="docs/classes.png" alt="Diagrama de Classes">
 </p>
 
