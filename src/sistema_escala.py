@@ -84,7 +84,7 @@ class SistemaEscala:
                 case "main":
                     self.tela = UIFactory().generateMainUI()
                 case _:
-                    print("opção não existe!")
+                    self.tela.set_conteudo("opção não existe!")
             
             self.tela.show()
 
@@ -98,7 +98,36 @@ class SistemaEscala:
     
     # class ColaboradorCommand(Command):
     def _colaboradorSystem(self):
-        return "executando colaborador"
+        choice = input("")
+
+        while(True):
+            match choice.lower():
+                case "criar":
+                    # Memento previous escala
+                    self.tela.set_conteudo("criando colaborador")
+                case "deletar":
+                    # self.tela = Memento next escala
+                    self.tela.set_conteudo("deletando colaborador")
+                case "buscar":
+                    # self.relatorio_template.gerar_relatorio()
+                    self.tela.set_conteudo("buscando colaborador")
+                case "tudo":
+                    # self.relatorio_template.gerar_relatorio()
+                    self.tela.set_conteudo("mostrando todos os colaboradores")
+                case "editar":
+                    # self.relatorio_template.gerar_relatorio()
+                    self.tela.set_conteudo("editando colaborador")
+                case "main":
+                    self.tela = UIFactory().generateMainUI()
+                case _:
+                    self.tela.set_conteudo("opção não existe!")
+            
+            self.tela.show()
+
+            if choice == "main":
+                return
+            
+            choice = input("")
 
     
     # def createColaborador(self, colaborador):
