@@ -20,6 +20,7 @@ class EscalaUI(UIInterface):
         print("\nInterface Escala")
         print("back.    volta para escala antecessora")
         print("forward. avança para escala sucessora")
+        print("create.  cria uma nova escala com os dados atuais")
         print("export.  exporta a escala atual")
         print("main.    volta para a tela principal")
         print()

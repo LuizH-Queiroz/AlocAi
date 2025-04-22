@@ -29,9 +29,6 @@ class SistemaEscala:
                     self.tela = UIFactory().generateCCUI()
                     # self.command = SistemaEscala.ColaboradorCommand()
                 case '3':
-                    self.tela = UIFactory().generateSolverUI()
-                    # self.command = SistemaEscala.SolverCommand()
-                case '4':
                     self.tela = UIFactory().generateRelatorioUI()
                     # self.command = SistemaEscala.Relaself.command = SistemaEscala.ColaboradorCommand()torioCommand()
                 case '0':
@@ -53,10 +50,8 @@ class SistemaEscala:
                     self._escalaSystem()
                 case '2':
                     self._colaboradorSystem()
-                # case '3':
-                #     self.command = SistemaEscala.SolverCommand()
-                # case '4':
-                #     self.command = SistemaEscala.RelatorioCommand()
+                case '3':
+                    self._relatorioSystem()
                 case _:
                     continue
 
@@ -78,6 +73,9 @@ class SistemaEscala:
                 case "forward":
                     # self.tela = Memento next escala
                     self.tela.set_conteudo("avançou uma escala")
+                case "create":
+                    # self.tela = Memento next escala
+                    self.tela.set_conteudo("criou uma escala")
                 case "export":
                     # self.relatorio_template.gerar_relatorio()
                     self.tela.set_conteudo("exportou relatorio")
@@ -147,20 +145,36 @@ class SistemaEscala:
 
     # def execute(self):
     #     return self.ColaboradorSystem()
-    
-    # class SolverCommand(Command):
-    def SolverSystem(self):
-        return "executando solver"
 
-    def execute(self):
-        return self.SolverSystem()
+    # def execute(self):
+    #     return self.SolverSystem()
     
     # class RelatorioCommand(Command):
-    def RelatorioSystem(self):
-        return "executando relatorio"
+    def _relatorioSystem(self):
+        choice = input("")
 
-    def execute(self):
-        return self.RelatorioSystem()
+        while(True):
+            match choice.lower():
+                case "criar":
+                    # Memento previous escala
+                    self.tela.set_conteudo("criando relatório")
+                case "exportar":
+                    # Memento previous escala
+                    self.tela.set_conteudo("exportando relatório")
+                case "main":
+                    self.tela = UIFactory().generateMainUI()
+                case _:
+                    self.tela.set_conteudo("opção não existe!")
+            
+            self.tela.show()
+
+            if choice == "main":
+                return
+            
+            choice = input("")
+
+    # def execute(self):
+    #     return self.RelatorioSystem()
     
 sistema = SistemaEscala()
 sistema.runSystem()
