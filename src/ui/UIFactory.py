@@ -2,6 +2,7 @@
 from .MainWindowUI import MainWindowUI
 from .EscalaUI import EscalaUI
 from .CadastroColaboradorUI import CadastroColaboradorUI
+from .RelatorioUI import RelatorioUI
 
 class UIFactory:
     @staticmethod
@@ -15,3 +16,7 @@ class UIFactory:
     @staticmethod
     def generateCCUI():
         return CadastroColaboradorUI()
+    
+    @staticmethod
+    def generateRelatorioUI():
+        return RelatorioUI()
