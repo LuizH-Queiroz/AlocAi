@@ -103,7 +103,7 @@ class SistemaEscala:
             match choice.lower():
                 case "criar":
                     # Memento previous escala
-                    self.tela.set_conteudo("criando colaborador")
+                    print("criando colaborador")
 
                     nome = input("nome: ")
                     id = int(input("id: "))
@@ -114,76 +114,107 @@ class SistemaEscala:
                 case "deletar":
                     # self.tela = Memento next escala
                     self.tela.set_conteudo("deletando colaborador")
+                    
+                    id = input("id do colaborador a ser editado: ")
+                    id = int(id)
+                    try:
+                        self.repositorio_colaborador.deleteColaborador(id)
+                        print(f"Colaborador de id {id} deletado com sucesso")
+                    except Exception as e:
+                        print("Falha em deletar colaborador")
+                        print(e)
 
                 case "buscar":
                     # self.relatorio_template.gerar_relatorio()
-                    self.tela.set_conteudo("buscando colaborador")
+                    print("buscando colaborador")
+                    id = input("id do colaborador a ser editado: ")
+                    id = int(id)
+                    try:
+                        colaborador = self.repositorio_colaborador.readColaborador(id)
+                        
+                        texto = ""
+
+                        texto += f"ID: {colaborador.getId()}\n"
+                        texto += f"Nome: {colaborador.getNome()}\n"
+                        texto += "Turnos: "
+                        texto += ", ".join(str(turno) for turno in colaborador.getTurnos())
+                        texto += "\n"
+                        texto += "-" * 30
+
+                        self.tela.set_conteudo(texto)
+
+                    except Exception as e:
+                        self.tela.set_conteudo(e)
+          
                 case "tudo":
                     # self.relatorio_template.gerar_relatorio()
-                    self.tela.set_conteudo("mostrando todos os colaboradores")
+                    texto = ""
+                    texto += "mostrando todos os colaboradores\n"
                     colaboradores = self.repositorio_colaborador.readAllColaborador()
                     for colaborador in colaboradores:
-                        print(f"ID: {colaborador.getId()}")
-                        print(f"Nome: {colaborador.getNome()}")
-                        print("Turnos:", end=" ")
-                        print(", ".join(str(turno) for turno in colaborador.getTurnos()))
-                        print("-" * 30)
-                    input("Aperte qualquer tecla para retornar ao menu")
+                        texto += f"ID: {colaborador.getId()}\n"
+                        texto += f"Nome: {colaborador.getNome()}\n"
+                        texto += "Turnos: "
+                        texto += ", ".join(str(turno) for turno in colaborador.getTurnos())
+                        texto += "\n"
+                        texto += "-" * 30
+                    self.tela.set_conteudo(texto)
                 case "editar":
                     # self.relatorio_template.gerar_relatorio()
                     self.tela.set_conteudo("editando colaborador")
                     id = input("id do colaborador a ser editado: ")
                     id = int(id)
-                    colaborador = self.repositorio_colaborador.readColaborador(id)
+                    try:
+                        colaborador = self.repositorio_colaborador.readColaborador(id)
 
-                    if colaborador:
-                        print(f"ID: {colaborador.getId()}")
-                        print(f"Nome: {colaborador.getNome()}")
-                        print("Turnos:", end=" ")
-                        print(", ".join(str(turno) for turno in colaborador.getTurnos()))
-                        print("-" * 30)
+                        if colaborador:
+                            print(f"ID: {colaborador.getId()}")
+                            print(f"Nome: {colaborador.getNome()}")
+                            print("Turnos:", end=" ")
+                            print(", ".join(str(turno) for turno in colaborador.getTurnos()))
+                            print("-" * 30)
 
-                        print(colaborador)
-                        print(type(colaborador))
+                            print(colaborador)
+                            print(type(colaborador))
 
-                        campo = input("campo a ser editado (nome, id, turnos): ")
-                        if campo == "nome":
-                            novo_nome = input("novo nome: ")
-                            self.repositorio_colaborador.updateColaborador(
-                                id,
-                                Colaborador(
-                                    novo_nome,
-                                    colaborador.getId(),
-                                    colaborador.getTurnos()
+                            campo = input("campo a ser editado (nome, id, turnos): ")
+                            if campo == "nome":
+                                novo_nome = input("novo nome: ")
+                                self.repositorio_colaborador.updateColaborador(
+                                    id,
+                                    Colaborador(
+                                        novo_nome,
+                                        colaborador.getId(),
+                                        colaborador.getTurnos()
                                     )
-                            )
-                        elif campo == "id":
-                            novo_id = int(input("novo id: "))
-                            colaborador.setId(novo_id)
-                            self.repositorio_colaborador.updateColaborador(
-                                id,
-                                Colaborador(
-                                    colaborador.getNome(),
-                                    novo_id,
-                                    colaborador.getTurnos()
-                                    )
-                            )
-                        elif campo == "turnos":
-                            novos_turnos = input("novos turnos (separados por vírgula): ")
-                            novos_turnos = novos_turnos.split(',')
-                            colaborador.setTurnos(novos_turnos)
-                            self.repositorio_colaborador.updateColaborador(
-                                id,
-                                Colaborador(
-                                    colaborador.getNome(),
-                                    colaborador.getId(),
-                                    novos_turnos
-                                    )
-                            )
-                        else:
-                            print("campo inválido")
-                    else:
-                        print("colaborador não encontrado")
+                                )
+                            elif campo == "id":
+                                novo_id = int(input("novo id: "))
+                                colaborador.setId(novo_id)
+                                self.repositorio_colaborador.updateColaborador(
+                                    id,
+                                    Colaborador(
+                                        colaborador.getNome(),
+                                        novo_id,
+                                        colaborador.getTurnos()
+                                        )
+                                )
+                            elif campo == "turnos":
+                                novos_turnos = input("novos turnos (separados por vírgula): ")
+                                novos_turnos = novos_turnos.split(',')
+                                colaborador.setTurnos(novos_turnos)
+                                self.repositorio_colaborador.updateColaborador(
+                                    id,
+                                    Colaborador(
+                                        colaborador.getNome(),
+                                        colaborador.getId(),
+                                        novos_turnos
+                                        )
+                                )
+                            else:
+                                print("campo inválido")
+                    except Exception as e:
+                        print(e)
                     
                     input("Aperte qualquer tecla para retornar ao menu")
                 case "main":
