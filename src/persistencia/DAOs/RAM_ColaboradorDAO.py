@@ -45,7 +45,8 @@ class RAM_ColaboradorDAO(ColaboradorDAO):
     def update(self, id: int, colaborador: Colaborador):
         for colab in self._colaboradores:
             if colab.getId() == id:
-                colab = copy.deepcopy(colaborador)
+                self._colaboradores.remove(colab)
+                self._colaboradores.append(copy.deepcopy(colaborador))
                 return
 
         raise Exception(f'Não existe colaborador com id {id}')

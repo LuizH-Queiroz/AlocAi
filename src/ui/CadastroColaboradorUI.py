@@ -12,7 +12,7 @@ class CadastroColaboradorUI(UIInterface):
     def show(self):
         # Implementação para exibir a interface de Escala
         os.system('clear')
-        print("\nInterface Escala")
+        print("\nInterface Colaborador")
         print("criar.    cria novo colaborador")
         print("deletar.  deleta colaborador existente")
         print("buscar.   busca colaborador por id")
