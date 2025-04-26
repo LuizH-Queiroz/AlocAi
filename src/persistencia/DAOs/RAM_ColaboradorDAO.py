@@ -50,3 +50,20 @@ class RAM_ColaboradorDAO(ColaboradorDAO):
                 return
 
         raise Exception(f'Não existe colaborador com id {id}')
+
+
+    # Metodos relativos ao Memento
+    def getMemento(self):
+        return copy.deepcopy(self.RAM_ColaboradorDAOMemento(self))
+
+    def setMemento(self, memento):
+        self._colaboradores = copy.deepcopy(memento)
+
+
+    ############################################################################
+    
+    # Subclasse do Memento de RAM_ColaboradorDAO
+    class RAM_ColaboradorDAOMemento:
+
+        def __init__(self, colaboradorDAO):
+            self._colaboradores = copy.deepcopy(colaboradorDAO._colaboradores)

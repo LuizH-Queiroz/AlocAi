@@ -32,3 +32,20 @@ class RAM_EscalaDAO(EscalaDAO):
 
     def update(self, escala: Escala):
         self._escala = copy.deepcopy(escala)
+
+
+    # Metodos relativos ao Memento
+    def getMemento(self):
+        return copy.deepcopy(self.RAM_EscalaDAOMemento(self))
+
+    def setMemento(self, memento):
+        self._escala = copy.deepcopy(memento)
+
+
+    ############################################################################
+    
+    # Subclasse do Memento de RAM_EscalaDAO
+    class RAM_EscalaDAOMemento:
+
+        def __init__(self, escalaDAO):
+            self._escala = copy.deepcopy(escalaDAO._escala)
