@@ -18,10 +18,10 @@ class SolverMIP(Solver):
         status = formulacao.solve_model()
 
         if status:
-            formulacao.print_solution() 
-            print('Solução viável encontrada.')
             solution = Write_solution(data)
             solution.write_excel_professor()
             solution.write_excel_dia_slot()
+
+            return formulacao.print_solution() 
         else:
-            print('Solução viável não encontrada.')
+            return 'Solução viável não encontrada.'

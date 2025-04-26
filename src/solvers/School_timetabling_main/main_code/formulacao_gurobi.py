@@ -18,7 +18,8 @@ class Formulacao:
         self.solution = []
 
     def print_solution(self):
-        print("\nSOLUÇÃO FINAL\n" + "-" * 30)
+        solucao = ""
+        solucao += "\nSOLUÇÃO FINAL\n" + "-" * 30
 
         dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
 
@@ -34,9 +35,9 @@ class Formulacao:
             dia = dias[s // self.slots_por_dia]
             slot_do_dia = s % self.slots_por_dia + 1
 
-            print(f"{professor} → {nome_disciplina} | {dia} - Slot {slot_do_dia}")
-
-
+            solucao += f"{professor} → {nome_disciplina} | {dia} - Slot {slot_do_dia}"
+        
+        return solucao
 
     def save_solution(self):
         with open('solvers/School_timetabling_main/Solution/Solucao.txt', 'w') as f:
@@ -95,7 +96,7 @@ class Formulacao:
             if m in self.Sm:
                 for s in self.Sm[m]:
                     self.model.addConstr(
-                        quicksum(self.x[p_, m_, s_] for (p_, m_, s_) in self.x if m_ == m and s_ == s) <= 1
+                        quicksum(self.x[p_, m_, s_] for (p_, m_, s_) in self.x if m_ == m and s_ == s) == 1
                     )
 
 
