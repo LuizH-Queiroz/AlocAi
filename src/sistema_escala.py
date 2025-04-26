@@ -75,6 +75,7 @@ class SistemaEscala:
                     # self.tela = Memento next escala
                     self.tela.set_conteudo("avançou uma escala")
                 case "create":
+                    self.solver_adapter.solve()
                     # self.tela = Memento next escala
                     self.tela.set_conteudo("criou uma escala")
                 case "export":
