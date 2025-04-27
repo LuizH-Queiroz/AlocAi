@@ -39,7 +39,7 @@ class RAM_EscalaDAO(EscalaDAO):
         return copy.deepcopy(self.RAM_EscalaDAOMemento(self))
 
     def setMemento(self, memento):
-        self._escala = copy.deepcopy(memento)
+        self._escala = copy.deepcopy(memento._escala)
 
 
     ############################################################################

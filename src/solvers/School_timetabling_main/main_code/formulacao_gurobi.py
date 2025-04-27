@@ -35,7 +35,7 @@ class Formulacao:
             dia = dias[s // self.slots_por_dia]
             slot_do_dia = s % self.slots_por_dia + 1
 
-            solucao += f"{professor} → {nome_disciplina} | {dia} - Slot {slot_do_dia}"
+            solucao += f"{professor} → {nome_disciplina} | {dia} - Slot {slot_do_dia}\n"
         
         return solucao
 
@@ -99,14 +99,6 @@ class Formulacao:
                         quicksum(self.x[p_, m_, s_] for (p_, m_, s_) in self.x if m_ == m and s_ == s) == 1
                     )
 
-
-        # self.model.setObjective(
-        #     quicksum(
-        #         quicksum(self.x[p, m, s] for s in self.Sm[m] if (p, m, s) in self.x) ** 2
-        #         for p in self.P if m in self.Mp[p] and m in self.Sm
-        #     ),
-        #     GRB.MINIMIZE
-        # )
         # Ajustando a função objetivo para considerar a alocação das disciplinas
         self.model.setObjective(
             # Maximizamos o total de alocações viáveis (termo positivo)...

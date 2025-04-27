@@ -17,6 +17,8 @@ class EscalaRepository:
 
             self._daoFactory = DAOFactory()
             self._escalaDAO = self._daoFactory.getEscalaDAO()
+            self._memento_lista = []
+            self._curr_memento = None
 
 
     def createEscala(self, escala):
@@ -31,17 +33,34 @@ class EscalaRepository:
     def updateEscala(self, novosDados):
         self._escalaDAO.update(novosDados)
 
-    def getMemento(self):
-        return
+    def getMementoEscala(self):
+        return self._escalaDAO.read()
 
     def createMemento(self, novosDados):
+        self._escalaDAO.create(novosDados)
+        novo_memento = self._escalaDAO.RAM_EscalaDAOMemento(self._escalaDAO)
+        self._memento_lista.append(novo_memento)
+        self.setIndexMemento(len(self._memento_lista) - 1)
         return
     
-    def setMemento(self, novosDados):
+    def setIndexMemento(self, index):
+        self._curr_memento = index
         return
 
     def previousMemento(self):
+        if not self._memento_lista:
+            return
+        if self._curr_memento == 0:
+            return
+        self._curr_memento -= 1
+        self._escalaDAO.setIndexMemento(self._memento_lista[self._curr_memento])
         return
     
     def nextMemento(self):
+        if not self._memento_lista:
+            return  
+        if self._curr_memento == len(self._memento_lista) - 1:
+            return
+        self._curr_memento += 1
+        self._escalaDAO.setIndexMemento(self._memento_lista[self._curr_memento])
         return

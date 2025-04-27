@@ -73,14 +73,16 @@ class SistemaEscala:
         while(True):
             match choice.lower():
                 case "back":
-                    memento = self.repositorio_escala.previousMemento()
+                    self.repositorio_escala.previousMemento()
+                    memento = self.repositorio_escala.readEscala()
                     text = ""
                     text += "voltou uma escala"
                     text += f"\n{memento}"
                     self.tela.set_conteudo(text)
 
                 case "forward":
-                    memento = self.repositorio_escala.nextMemento()
+                    self.repositorio_escala.nextMemento()
+                    memento = self.repositorio_escala.readEscala()
                     text = ""
                     text += "avançou uma escala"
                     text += f"\n{memento}"
@@ -88,16 +90,12 @@ class SistemaEscala:
 
                 case "create":
                     escala = self.solver_adapter.solve()
-                    memento = self.repositorio_escala.createMemento(escala)
+                    self.repositorio_escala.createMemento(escala)
 
                     text = ""
                     text += "criou uma escala"
-                    text += f"\n{memento}"
+                    text += f"\n{escala}"
                     self.tela.set_conteudo(text)
-
-                case "export":
-                    # self.relatorio_template.gerar_relatorio()
-                    self.tela.set_conteudo("exportou relatorio")
 
                 case "main":
                     self.tela = UIFactory().generateMainUI()
