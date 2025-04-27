@@ -3,6 +3,7 @@ from relatorio.RelatorioFactory import RelatorioFactory
 from solvers.AdapterFactory import AdapterFactory
 from ui.UIFactory import UIFactory
 from persistencia.entidades.Colaborador import Colaborador  
+from persistencia.entidades.Disciplina import Disciplina
 from abc import abstractmethod, ABC
 
 class SistemaEscala:
@@ -11,6 +12,7 @@ class SistemaEscala:
         self.repositorio_colaborador = PersistenciaFactory().getColaboradorRepository()
         self.relatorio_template = RelatorioFactory().generate_relatorio_CSV()
         self.repositorio_escala = PersistenciaFactory().getEscalaRepository()
+        self.repositorio_disciplina = PersistenciaFactory().getDisciplinaRepository()
         self.solver_adapter = AdapterFactory().generateSolverAdapterMIP()
         self.command = None
         self.tela = None
@@ -60,13 +62,6 @@ class SistemaEscala:
                 case _:
                     continue
 
-    # class Command(ABC):
-    #     @abstractmethod
-    #     def execute(self):
-    #         pass
-    
-    # class EscalaCommand(Command):
-
     def _escalaSystem(self):
         choice = input("")
 
@@ -110,10 +105,6 @@ class SistemaEscala:
             
             choice = input("")
     
-    # def execute(self):
-    #     return self.EscalaSystem()
-    
-    # class ColaboradorCommand(Command):
     def _colaboradorSystem(self):
         choice = input("")
 
@@ -192,9 +183,6 @@ class SistemaEscala:
                             print(", ".join(str(turno) for turno in colaborador.getTurnos()))
                             print("-" * 30)
 
-                            print(colaborador)
-                            print(type(colaborador))
-
                             campo = input("campo a ser editado (nome, id, turnos): ")
                             if campo == "nome":
                                 novo_nome = input("novo nome: ")
@@ -257,17 +245,17 @@ class SistemaEscala:
 
                     nome = input("nome: ")
                     id = int(input("id: "))
-                    slots = input("slots: ")
+                    turnos = input("Turnos: ")
 
-                    # disciplina = Disciplina(nome, id, turno.split(','))
-                    # self.repositorio_disciplina.createDisciplina(disciplina)
+                    disciplina = Disciplina(nome, id, turnos.split(','))
+                    self.repositorio_disciplina.createDisciplina(disciplina)
 
                 case "deletar":
                     print("deletando disciplina")
                     
                     id = int(input("id da disciplina a ser editada: "))
                     try:
-                        # self.repositorio_disciplina.deleteDisciplina(id)
+                        self.repositorio_disciplina.deleteDisciplina(id)
                         print(f"Disciplina de id {id} deletada com sucesso")
                     except Exception as e:
                         print("Falha em deletar disciplina")
@@ -278,16 +266,16 @@ class SistemaEscala:
 
                     id = int(input("id da disciplina a ser editada: "))
                     try:
-                        # disciplina = self.repositorio_disciplina.readDisciplina(id)
+                        disciplina = self.repositorio_disciplina.readDisciplina(id)
                         
                         texto = ""
 
-                        # texto += f"ID: {disciplina.getId()}\n"
-                        # texto += f"Nome: {disciplina.getNome()}\n"
-                        # texto += "Slots: "
-                        # texto += " ".join(str(turno) for turno in disciplina.getSlots())
-                        # texto += "\n"
-                        # texto += "-" * 30
+                        texto += f"ID: {disciplina.getId()}\n"
+                        texto += f"Nome: {disciplina.getNome()}\n"
+                        texto += "Turnos: "
+                        texto += " ".join(str(turno) for turno in disciplina.getTurnos())
+                        texto += "\n"
+                        texto += "-" * 30
 
                         self.tela.set_conteudo(texto)
 
@@ -298,14 +286,14 @@ class SistemaEscala:
                     print("mostrando todas as disciplinas")
  
                     texto = ""
-                    # disciplinas = self.repositorio_disciplina.readAllDisciplinas()
-                    # for disciplina in disciplinas:
-                    #     texto += f"ID: {disciplina.getId()}\n"
-                    #     texto += f"Nome: {disciplina.getNome()}\n"
-                    #     texto += "Slots: "
-                    #     texto += " ".join(str(turno) for turno in disciplina.getSlots())
-                    #     texto += "\n"
-                    #     texto += "-" * 30
+                    disciplinas = self.repositorio_disciplina.readAllDisciplina()
+                    for disciplina in disciplinas:
+                        texto += f"ID: {disciplina.getId()}\n"
+                        texto += f"Nome: {disciplina.getNome()}\n"
+                        texto += "Turnos: "
+                        texto += " ".join(str(turno) for turno in disciplina.getTurnos())
+                        texto += "\n"
+                        texto += "-" * 30
                     self.tela.set_conteudo(texto)
 
                 case "editar":
@@ -315,54 +303,54 @@ class SistemaEscala:
                     id = int(id)
                     try:
                         pass
-                        # disciplina = self.repositorio_disciplina.readDisciplina(id)
+                        disciplina = self.repositorio_disciplina.readDisciplina(id)
 
-                        # if disciplina:
-                        #     # print(f"ID: {disciplina.getId()}")
-                        #     # print(f"Nome: {disciplina.getNome()}")
-                        #     # print("Slots:", end=" ")
-                        #     # print(" ".join(str(turno) for turno in disciplina.getSlots()))
-                        #     # print("-" * 30)
+                        if disciplina:
+                            print(f"ID: {disciplina.getId()}")
+                            print(f"Nome: {disciplina.getNome()}")
+                            print("Turnos:", end=" ")
+                            print(" ".join(str(turno) for turno in disciplina.getTurnos()))
+                            print("-" * 30)
 
-                        #     # print(disciplina)
-                        #     # print(type(disciplina))
+                            print(disciplina)
+                            print(type(disciplina))
 
-                        #     campo = input("campo a ser editado (nome, id, slots): ")
-                        #     if campo == "nome":
-                        #         novo_nome = input("novo nome: ")
-                        #         self.repositorio_Disciplina.updateDisciplina(
-                        #             id,
-                        #             Disciplina(
-                        #                 novo_nome,
-                        #                 disciplina.getId(),
-                        #                 disciplina.getSlots()
-                        #             )
-                        #         )
-                        #     elif campo == "id":
-                        #         novo_id = int(input("novo id: "))
-                        #         disciplina.setId(novo_id)
-                        #         self.repositorio_disciplina.updateDisciplina(
-                        #             id,
-                        #             Disciplina(
-                        #                 disciplina.getNome(),
-                        #                 novo_id,
-                        #                 disciplina.getSlots()
-                        #                 )
-                        #         )
-                        #     elif campo == "slots":
-                        #         novos_slots = input("novos slots: ")
-                        #         novos_slots = novos_slots.split()
-                        #         disciplina.setSlots(novos_slots)
-                        #         self.repositorio_disciplina.updateDisciplina(
-                        #             id,
-                        #             Disciplina(
-                        #                 disciplina.getNome(),
-                        #                 disciplina.getId(),
-                        #                 novos_slots
-                        #                 )
-                        #         )
-                        #     else:
-                        #         print("campo inválido")
+                            campo = input("campo a ser editado (nome, id, Turnos): ")
+                            if campo == "nome":
+                                novo_nome = input("novo nome: ")
+                                self.repositorio_disciplina.updateDisciplina(
+                                    id,
+                                    Disciplina(
+                                        novo_nome,
+                                        disciplina.getId(),
+                                        disciplina.getTurnos()
+                                    )
+                                )
+                            elif campo == "id":
+                                novo_id = int(input("novo id: "))
+                                disciplina.setId(novo_id)
+                                self.repositorio_disciplina.updateDisciplina(
+                                    id,
+                                    Disciplina(
+                                        disciplina.getNome(),
+                                        novo_id,
+                                        disciplina.getTurnos()
+                                        )
+                                )
+                            elif campo == "Turnos":
+                                novos_Turnos = input("novos Turnos: ")
+                                novos_Turnos = novos_Turnos.split()
+                                disciplina.setTurnos(novos_Turnos)
+                                self.repositorio_disciplina.updateDisciplina(
+                                    id,
+                                    Disciplina(
+                                        disciplina.getNome(),
+                                        disciplina.getId(),
+                                        novos_Turnos
+                                        )
+                                )
+                            else:
+                                print("campo inválido")
                     except Exception as e:
                         print(e)
                     
@@ -381,31 +369,6 @@ class SistemaEscala:
             
             choice = input("")
 
-
-
-    
-    # def createColaborador(self, colaborador):
-    #     self._colaboradorDAO.create(colaborador)
-
-    # def deleteColaborador(self, id: int):
-    #     self._colaboradorDAO.delete(id)
-
-    # def readColaborador(self, id: int):
-    #     return self._colaboradorDAO.read(id)
-
-    # def readAllColaborador(self):
-    #     return self._colaboradorDAO.readAll()
-
-    # def updateColaborador(self, id: int, novosDados):
-    #     self._colaboradorDAO.update(id, novosDados)
-
-    # def execute(self):
-    #     return self.ColaboradorSystem()
-
-    # def execute(self):
-    #     return self.SolverSystem()
-    
-    # class RelatorioCommand(Command):
     def _relatorioSystem(self):
         choice = input("")
 
@@ -428,9 +391,6 @@ class SistemaEscala:
                 return
             
             choice = input("")
-
-    # def execute(self):
-    #     return self.RelatorioSystem()
     
 sistema = SistemaEscala()
 sistema.runSystem()

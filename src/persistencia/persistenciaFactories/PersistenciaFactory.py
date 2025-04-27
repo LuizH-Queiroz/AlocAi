@@ -1,5 +1,6 @@
 from ..repositorios.ColaboradorRepository import ColaboradorRepository
 from ..repositorios.EscalaRepository import EscalaRepository
+from ..repositorios.DisciplinaRepository import DisciplinaRepository
 
 
 class PersistenciaFactory:
@@ -15,3 +16,6 @@ class PersistenciaFactory:
 
     def getEscalaRepository(self):
         return EscalaRepository()
+    
+    def getDisciplinaRepository(self):
+        return DisciplinaRepository()
