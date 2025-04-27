@@ -30,3 +30,18 @@ class EscalaRepository:
 
     def updateEscala(self, novosDados):
         self._escalaDAO.update(novosDados)
+
+    def getMemento(self):
+        return
+
+    def createMemento(self, novosDados):
+        return
+    
+    def setMemento(self, novosDados):
+        return
+
+    def previousMemento(self):
+        return
+    
+    def nextMemento(self):
+        return

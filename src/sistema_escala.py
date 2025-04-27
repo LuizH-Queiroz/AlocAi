@@ -73,20 +73,35 @@ class SistemaEscala:
         while(True):
             match choice.lower():
                 case "back":
-                    # Memento previous escala
-                    self.tela.set_conteudo("voltou uma escala")
+                    memento = self.repositorio_escala.previousMemento()
+                    text = ""
+                    text += "voltou uma escala"
+                    text += f"\n{memento}"
+                    self.tela.set_conteudo(text)
+
                 case "forward":
-                    # self.tela = Memento next escala
-                    self.tela.set_conteudo("avançou uma escala")
+                    memento = self.repositorio_escala.nextMemento()
+                    text = ""
+                    text += "avançou uma escala"
+                    text += f"\n{memento}"
+                    self.tela.set_conteudo(text)
+
                 case "create":
-                    self.solver_adapter.solve()
-                    # self.tela = Memento next escala
-                    self.tela.set_conteudo("criou uma escala")
+                    escala = self.solver_adapter.solve()
+                    memento = self.repositorio_escala.createMemento(escala)
+
+                    text = ""
+                    text += "criou uma escala"
+                    text += f"\n{memento}"
+                    self.tela.set_conteudo(text)
+
                 case "export":
                     # self.relatorio_template.gerar_relatorio()
                     self.tela.set_conteudo("exportou relatorio")
+
                 case "main":
                     self.tela = UIFactory().generateMainUI()
+                    
                 case _:
                     self.tela.set_conteudo("opção não existe!")
             
