@@ -6,25 +6,32 @@ import copy
 
 class Colaborador:
 
-    def __init__(self, nome: str, id: int, turnos: List[Turno]):
-        self._nome      = nome
-        self._id        = id
-        self._turnos    = turnos
+    def __init__(self, nome: str, id: int, disciplinas, turnos: List[Turno]):
+        self._nome          = nome
+        self._id            = id
+        self._disciplinas   = disciplinas
+        self._turnos        = turnos
 
         self._validar()
 
     # getters
+    def getDisciplinas(self):
+        return copy.deepcopy(self._disciplinas)
+
     def getId(self) -> int:
-        return self._id
+        return copy.deepcopy(self._id)
 
     def getNome(self) -> str:
-        return self._nome
+        return copy.deepcopy(self._nome)
 
     def getTurnos(self) -> List[Turno]:
-        return self._turnos
+        return copy.deepcopy(self._turnos)
 
 
     # setters
+    def setDisciplinas(self, disciplinas):
+        self._disciplinas = copy.deepcopy(disciplinas)
+
     def setId(self, id: int):
         temp = copy.deepcopy(self)
         temp._id = id

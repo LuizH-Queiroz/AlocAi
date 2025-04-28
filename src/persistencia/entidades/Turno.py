@@ -4,13 +4,13 @@ from typing import List
 
 # Enumerados auxiliares para a classe Turno
 class DiaSemana(Enum):
-    DOMINGO         = 1
-    SEGUNDA_FEIRA   = 2
-    TERCA_FEIRA     = 3
-    QUARTA_FEIRA    = 4
-    QUINTA_FEIRA    = 5
-    SEXTA_FEIRA     = 6
-    SABADO          = 7
+    SEGUNDA_FEIRA   = 0
+    TERCA_FEIRA     = 1
+    QUARTA_FEIRA    = 2
+    QUINTA_FEIRA    = 3
+    SEXTA_FEIRA     = 4
+    SABADO          = 5
+    DOMINGO         = 6
 
 
 class HoraDia(Enum):
@@ -38,6 +38,8 @@ class Turno:
     def getColaboradores(self) -> List[int]:
         return self._colaboradores
 
+    def getIntId(self):
+        return self._diaSemana * 3 + self._horaDia
 
     # setters
     def appendColaborador(self, id: int):
