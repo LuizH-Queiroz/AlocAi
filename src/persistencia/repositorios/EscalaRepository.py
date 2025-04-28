@@ -16,7 +16,7 @@ class EscalaRepository:
             self._inicializado = True
 
             self._daoFactory = DAOFactory()
-            self._escalaDAO = self._daoFactory.getEscalaDAO()
+            self._escalaDAO = self._daoFactory.getEscalaDAOCSV()
             self._memento_lista = []
             self._curr_memento = -1
 

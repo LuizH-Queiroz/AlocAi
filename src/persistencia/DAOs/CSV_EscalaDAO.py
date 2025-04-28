@@ -5,7 +5,7 @@ import copy
 import csv
 
 
-FILEPATH = '../../solvers/School_timetabling_main/Data/VALIDAÇÃO/'
+FILEPATH = 'solvers/School_timetabling_main/Data/VALIDAÇÃO/'
 
 
 class CSV_EscalaDAO(EscalaDAO):

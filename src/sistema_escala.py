@@ -111,13 +111,19 @@ class SistemaEscala:
         while(True):
             match choice.lower():
                 case "criar":
-                    # Memento previous escala
                     print("criando colaborador")
 
                     nome = input("nome: ")
                     id = int(input("id: "))
-                    turno = input("turno: ")
-                    colaborador = Colaborador(nome, id, turno.split(','))
+                    disciplinas = input("disciplinas (separadas por vírgula): ")
+                    turno = input("turnos (separados por vírgula): ")
+
+                    colaborador = Colaborador(
+                        nome,
+                        id,
+                        disciplinas.split(','),
+                        [t.strip() for t in turno.split(',')]
+                    )
 
                     self.repositorio_colaborador.createColaborador(colaborador)
                 case "deletar":
@@ -136,7 +142,7 @@ class SistemaEscala:
                 case "buscar":
                     # self.relatorio_template.gerar_relatorio()
                     print("buscando colaborador")
-                    id = input("id do colaborador a ser editado: ")
+                    id = input("id do colaborador a ser encontrado: ")
                     id = int(id)
                     try:
                         colaborador = self.repositorio_colaborador.readColaborador(id)
@@ -167,6 +173,7 @@ class SistemaEscala:
                         texto += ", ".join(str(turno) for turno in colaborador.getTurnos())
                         texto += "\n"
                         texto += "-" * 30
+                        texto += "\n"
                     self.tela.set_conteudo(texto)
                 case "editar":
                     # self.relatorio_template.gerar_relatorio()
@@ -179,11 +186,14 @@ class SistemaEscala:
                         if colaborador:
                             print(f"ID: {colaborador.getId()}")
                             print(f"Nome: {colaborador.getNome()}")
+                            print("Disciplinas:", end=" ")
+                            print(", ".join(colaborador.getDisciplinas()))
                             print("Turnos:", end=" ")
                             print(", ".join(str(turno) for turno in colaborador.getTurnos()))
                             print("-" * 30)
 
-                            campo = input("campo a ser editado (nome, id, turnos): ")
+                            campo = input("campo a ser editado (nome, id, disciplinas, turnos): ")
+                            
                             if campo == "nome":
                                 novo_nome = input("novo nome: ")
                                 self.repositorio_colaborador.updateColaborador(
@@ -191,38 +201,57 @@ class SistemaEscala:
                                     Colaborador(
                                         novo_nome,
                                         colaborador.getId(),
+                                        colaborador.getDisciplinas(),
                                         colaborador.getTurnos()
                                     )
                                 )
+                            
                             elif campo == "id":
                                 novo_id = int(input("novo id: "))
-                                colaborador.setId(novo_id)
                                 self.repositorio_colaborador.updateColaborador(
                                     id,
                                     Colaborador(
                                         colaborador.getNome(),
                                         novo_id,
+                                        colaborador.getDisciplinas(),
                                         colaborador.getTurnos()
-                                        )
+                                    )
                                 )
-                            elif campo == "turnos":
-                                novos_turnos = input("novos turnos (separados por vírgula): ")
-                                novos_turnos = novos_turnos.split(',')
-                                colaborador.setTurnos(novos_turnos)
+                            
+                            elif campo == "disciplinas":
+                                novas_disciplinas = input("novas disciplinas (separadas por vírgula): ")
+                                novas_disciplinas = novas_disciplinas.split(',')
                                 self.repositorio_colaborador.updateColaborador(
                                     id,
                                     Colaborador(
                                         colaborador.getNome(),
                                         colaborador.getId(),
-                                        novos_turnos
-                                        )
+                                        novas_disciplinas,
+                                        colaborador.getTurnos()
+                                    )
                                 )
+                            
+                            elif campo == "turnos":
+                                novos_turnos = input("novos turnos (separados por vírgula): ")
+                                novos_turnos = novos_turnos.split(',')
+                                self.repositorio_colaborador.updateColaborador(
+                                    id,
+                                    Colaborador(
+                                        colaborador.getNome(),
+                                        colaborador.getId(),
+                                        colaborador.getDisciplinas(),
+                                        novos_turnos
+                                    )
+                                )
+                            
                             else:
                                 print("campo inválido")
+
                     except Exception as e:
                         print(e)
-                    
+
                     input("Aperte qualquer tecla para retornar ao menu")
+
                 case "main":
                     self.tela = UIFactory().generateMainUI()
                 case _:

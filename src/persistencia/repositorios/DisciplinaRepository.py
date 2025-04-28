@@ -16,7 +16,7 @@ class DisciplinaRepository:
             self._inicializado      = True
             
             self._daoFactory        = DAOFactory()
-            self._disciplinaDAO    = self._daoFactory.getDisciplinaDAO()
+            self._disciplinaDAO    = self._daoFactory.getDisciplinaDAOCSV()
             
 
     def createDisciplina(self, disciplina):

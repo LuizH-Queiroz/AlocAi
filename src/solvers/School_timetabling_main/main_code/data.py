@@ -23,7 +23,7 @@ class Data:
 
         for i, row in df.iterrows():
             nome_disciplina = row['DISCIPLINA']
-            id_disc = i  # ou use outro identificador, se necessário
+            id_disc = int(row['ID'])  # ou use outro identificador, se necessário
 
             # Preenche os dois mapeamentos
             self.nome_para_id_disciplina[nome_disciplina] = id_disc

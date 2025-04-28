@@ -16,7 +16,7 @@ class ColaboradorRepository:
             self._inicializado      = True
 
             self._daoFactory        = DAOFactory()
-            self._colaboradorDAO    = self._daoFactory.getColaboradorDAO()
+            self._colaboradorDAO    = self._daoFactory.getColaboradorDAOCSV()
             
 
     def createColaborador(self, colaborador):
