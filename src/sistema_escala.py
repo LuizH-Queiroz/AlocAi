@@ -276,7 +276,7 @@ class SistemaEscala:
                     id = int(input("id: "))
                     turnos = input("Turnos: ")
 
-                    disciplina = Disciplina(nome, id, turnos.split(','))
+                    disciplina = Disciplina(nome, id, [t.strip() for t in turno.split(',')])
                     self.repositorio_disciplina.createDisciplina(disciplina)
 
                 case "deletar":
@@ -323,6 +323,7 @@ class SistemaEscala:
                         texto += " ".join(str(turno) for turno in disciplina.getTurnos())
                         texto += "\n"
                         texto += "-" * 30
+                        texto += "\n"
                     self.tela.set_conteudo(texto)
 
                 case "editar":
