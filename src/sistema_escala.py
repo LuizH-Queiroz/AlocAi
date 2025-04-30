@@ -1,6 +1,9 @@
 from persistencia.persistenciaFactories.PersistenciaFactory import PersistenciaFactory
 from relatorio.RelatorioFactory import RelatorioFactory
 from solvers.AdapterFactory import AdapterFactory
+from persistencia.DAOs.CSV_ColaboradorDAO import CSV_ColaboradorDAO
+from persistencia.DAOs.CSV_EscalaDAO import CSV_EscalaDAO
+from persistencia.DAOs.CSV_DisciplinaDAO import CSV_DisciplinaDAO
 from ui.UIFactory import UIFactory
 from persistencia.entidades.Colaborador import Colaborador  
 from persistencia.entidades.Disciplina import Disciplina
@@ -428,6 +431,7 @@ class SistemaEscala:
             match choice.lower():
                 case "criar":
                     # Memento previous escala
+                    self.relatorio_template.gerar_relatorio(CSV_ColaboradorDAO(), CSV_EscalaDAO())
                     self.tela.set_conteudo("criando relatório")
                 case "main":
                     self.tela = UIFactory().generateMainUI()
