@@ -59,7 +59,7 @@ class SistemaEscala:
                     self._colaboradorSystem()
                 case '3':
                     self._disciplinaSystem()
-                case '3':
+                case '4':
                     self._relatorioSystem()
                 case _:
                     continue
