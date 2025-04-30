@@ -1,19 +1,18 @@
 from abc import ABC, abstractmethod
-from persistencia.DAOs.RAM_ColaboradorDAO import RAM_ColaboradorDAO
-from persistencia.DAOs.RAM_EscalaDAO import RAM_EscalaDAO
+from persistencia.interfaces import ColaboradorDAO, EscalaDAO
 
 class RelatorioTemplate(ABC):
-    def gerar_relatorio(self):
-        colaboradores = self._get_colaboradores(RAM_ColaboradorDAO())
-        escala = self._get_escala_geral(RAM_EscalaDAO())
+    def gerar_relatorio(self, colaboradorDAO, escalaDAO):
+        colaboradores = self._get_colaboradores(colaboradorDAO)
+        escala = self._get_escala_geral(escalaDAO)
         self._imprime_relatorio(colaboradores, escala)
 
     @abstractmethod
-    def _get_colaboradores(self, dao_colaboradores: RAM_ColaboradorDAO):
+    def _get_colaboradores(self, dao_colaboradores: ColaboradorDAO):
         pass
 
     @abstractmethod
-    def _get_escala_geral(self, dao_escala: RAM_EscalaDAO):
+    def _get_escala_geral(self, dao_escala: EscalaDAO):
         pass
 
     @abstractmethod
