@@ -429,9 +429,6 @@ class SistemaEscala:
                 case "criar":
                     # Memento previous escala
                     self.tela.set_conteudo("criando relatório")
-                case "exportar":
-                    # Memento previous escala
-                    self.tela.set_conteudo("exportando relatório")
                 case "main":
                     self.tela = UIFactory().generateMainUI()
                 case _:
