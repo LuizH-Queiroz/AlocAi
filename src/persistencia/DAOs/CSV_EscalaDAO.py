@@ -25,6 +25,7 @@ class CSV_EscalaDAO(EscalaDAO):
 
     def create(self, escala: Escala):
         self._setNextFile()
+        print(escala)
         with open(self._file, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(escala.getAtribuicoes())
@@ -59,6 +60,9 @@ class CSV_EscalaDAO(EscalaDAO):
                 pass
         except Exception as e:
             print(f'>> Erro ao abrir arquivo {self._file}: {e}')
+    
+    def set_file_count(self, count):
+        self._filecount = count
 
 
     # Metodos relativos ao Memento
@@ -68,14 +72,14 @@ class CSV_EscalaDAO(EscalaDAO):
     def setMemento(self, memento):
 
         try:
-            with open(memento._file, mode='r') as file:
+            with open(memento._escala, mode='r') as file:
                 pass
         except Exception as e:
-            msg =   f'>> Erro ao abrir arquivo {memento._file}: {e}\n'
+            msg =   f'>> Erro ao abrir arquivo {memento._escala}: {e}\n'
             msg +=  f'>> Escala possivelmente foi deletada anteriormente\n'
             raise Exception(msg)
 
-        self._file = memento._file
+        self._file = memento._escala
 
 
     ############################################################################

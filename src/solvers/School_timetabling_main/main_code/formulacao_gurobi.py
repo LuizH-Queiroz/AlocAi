@@ -20,6 +20,7 @@ class Formulacao:
     def print_solution(self):
         solucao = ""
         solucao += "\nSOLUÇÃO FINAL\n" + "-" * 30
+        solucao += "\n"
 
         dias = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
 

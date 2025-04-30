@@ -38,7 +38,7 @@ class Validador:
 
 
     def validarEscala(self, escala) -> bool:
-        if not isinstance(escala.getColaboradores(), list):
-            return False
+        # if not isinstance(escala.getAtribuicoes()[:][0], list):
+        #     return False
     
         return True

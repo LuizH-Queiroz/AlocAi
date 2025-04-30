@@ -7,17 +7,17 @@ import copy
 class Escala:
 
     def __init__(self, atribuicoes):
-        self._gerarTurnos()
         self._atribuicoes = atribuicoes # Lista de listas de atribuicoes do tipo
-                                        # [idColab, disciplina, horario(int)]
+                                        # [idColab, disciplina, dia_semana, horario(int)]
+        # self._gerarTurnos()
+        # self._olaboradores
 
         self._validar()
-
 
     def getAtribuicoes(self):
         return copy.deepcopy(self._atribuicoes)
 
-    # getters
+    # # getters
     # def getColaboradores(self):
     #     return self._colaboradores
 
@@ -25,7 +25,7 @@ class Escala:
     #     return self._turnos
 
 
-    # outros metodos (privados)
+    # # outros metodos (privados)
     # def _atribuirColaboradorTurno(self):
     #     for colaborador in self._colaboradores:
     #         for turno in colaborador.getTurnos():
