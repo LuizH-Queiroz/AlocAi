@@ -298,7 +298,7 @@ class SistemaEscala:
                     id = int(input("id: "))
                     turnos = input("Turnos: ")
 
-                    disciplina = Disciplina(nome, id, [t.strip() for t in turno.split(',')])
+                    disciplina = Disciplina(nome, id, [t.strip() for t in turnos.split(',')])
                     self.repositorio_disciplina.createDisciplina(disciplina)
 
                 case "deletar":
