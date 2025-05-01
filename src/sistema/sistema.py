@@ -13,7 +13,6 @@ class Sistema(ABC):
         self.repositorio_escala = PersistenciaFactory().getEscalaRepository()
         self.repositorio_disciplina = PersistenciaFactory().getDisciplinaRepository()
         self.solver_adapter = AdapterFactory().generateSolverAdapterMIP()
-        self.command = None
             
     @abstractmethod
     def runSystem(self):
