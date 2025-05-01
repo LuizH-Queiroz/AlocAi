@@ -1,7 +1,7 @@
 import subprocess
 from .Solver import Solver
 from .School_timetabling_main.main_code.data import Data
-from .School_timetabling_main.main_code.formulacao_gurobi import Formulacao
+from .School_timetabling_main.main_code.formulacao_MIP import Formulacao
 from .School_timetabling_main.main_code.write_solution import Write_solution
 
 class SolverMIP(Solver):
