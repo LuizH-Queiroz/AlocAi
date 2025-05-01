@@ -7,7 +7,7 @@ from ui.UIFactory import UIFactory
 class SistemaEscala(Sistema):
     def __init__(self):
         self.tela = UIFactory().generateEscalaUI()
-        self.command_factory = CommandFactory().get_sistema_command_factory()
+        self.command_factory = CommandFactory().get_escala_command_factory()
         super().__init__()
 
     def runSystem(self):
