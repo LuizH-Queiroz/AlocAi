@@ -20,12 +20,12 @@ class CSV_EscalaDAO(EscalaDAO):
     def __init__(self):
         if not self._inicializado:
             self._inicializado = True
+            self._file = None
 
             self._filecount = 0
 
     def create(self, escala: Escala):
         self._setNextFile()
-        print(escala)
         with open(self._file, mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(escala.getAtribuicoes())
@@ -39,6 +39,9 @@ class CSV_EscalaDAO(EscalaDAO):
 
 
     def read(self):
+        if self._file is None:
+            return None
+            
         with open(self._file, mode='r', newline='') as file:
             escala = list(csv.reader(file))
 

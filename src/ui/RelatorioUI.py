@@ -21,6 +21,5 @@ class RelatorioUI(UIInterface):
         print(self._relatorio)
         print()
         print("criar.    gera novo relatório")
-        print("exportar. exporta relatório atual")
         print("main.     volta para a tela principal")
         print(self._conteudo)
