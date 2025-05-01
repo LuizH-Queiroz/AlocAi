@@ -55,4 +55,4 @@ class Colaborador:
         validador = Validador()
         resultado = validador.validarColaborador(self)
         if not resultado[0]:
-            raise Exception(f'Colaborador {self.getId()} - {self.getNome()} é inválido!\n\nMotivo: {resultado[1]}')
+            raise Exception(f'\n---\nColaborador {self.getId()} - {self.getNome()} é inválido!\nMotivo: {resultado[1]}\n---\n')

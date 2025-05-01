@@ -76,6 +76,6 @@ class ColaboradorEditarCommand(Command):
                     print("campo inválido")
 
         except Exception as e:
-            print(e)
+            print(f"Falha em editar colaborador: {e}")
 
         input("Aperte qualquer tecla para retornar ao menu")

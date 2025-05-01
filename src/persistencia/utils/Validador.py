@@ -32,6 +32,10 @@ class Validador:
 
         if not isinstance(colaborador.getTurnos(), list):
             return False, "Turnos devem estar em uma lista"
+        
+        valores_validos = {str(i) for i in range(0, 15)}  # strings de "1" a "14"
+        if not all(item.strip() in valores_validos for item in colaborador.getTurnos()):
+            return False, "Turnos devem ser números inteiros entre 0 e 14"
 
         return True, "Colaborador válido"
 
