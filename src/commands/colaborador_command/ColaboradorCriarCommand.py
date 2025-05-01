@@ -7,15 +7,19 @@ class ColaboradorCriarCommand(Command):
         print("criando colaborador")
 
         nome = input("nome: ")
-        id = int(input("id: "))
+        id = input("id: ")
         disciplinas = input("disciplinas (separadas por vírgula): ")
         turno = input("turnos (separados por vírgula): ")
 
-        colaborador = Colaborador(
-            nome,
-            id,
-            disciplinas.split(','),
-            [t.strip() for t in turno.split(',')]
-        )
 
-        sistema.repositorio_colaborador.createColaborador(colaborador)
+        try:
+            colaborador = Colaborador(
+                nome,
+                int(id),
+                disciplinas.split(','),
+                [t.strip() for t in turno.split(',')]
+            )
+            sistema.repositorio_colaborador.createColaborador(colaborador)
+        except Exception as e:
+            print(f"Erro ao criar colaborador: {e}")
+            input("Pressione Enter para continuar...")

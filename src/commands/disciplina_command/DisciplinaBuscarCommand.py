@@ -5,8 +5,9 @@ class DisciplinaBuscarCommand(Command):
     def execute(self, sistema):
         print("buscando disciplina")
 
-        id = int(input("id da disciplina a ser editada: "))
+        id = input("id da disciplina a ser editada: ")
         try:
+            id = int(id)
             disciplina = sistema.repositorio_disciplina.readDisciplina(id)
             
             texto = ""

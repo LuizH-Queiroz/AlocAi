@@ -53,5 +53,6 @@ class Colaborador:
     # outros metodos (privados)
     def _validar(self):
         validador = Validador()
-        if not validador.validarColaborador(self):
-            raise Exception(f'Colaborador \"{self}\" é inválido!')
+        resultado = validador.validarColaborador(self)
+        if not resultado[0]:
+            raise Exception(f'Colaborador {self.getId()} - {self.getNome()} é inválido!\n\nMotivo: {resultado[1]}')

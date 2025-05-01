@@ -7,8 +7,8 @@ class ColaboradorDeletarCommand(Command):
         sistema.tela.set_conteudo("deletando colaborador")
         
         id = input("id do colaborador a ser editado: ")
-        id = int(id)
         try:
+            id = int(id)
             sistema.repositorio_colaborador.deleteColaborador(id)
             print(f"Colaborador de id {id} deletado com sucesso")
         except Exception as e:

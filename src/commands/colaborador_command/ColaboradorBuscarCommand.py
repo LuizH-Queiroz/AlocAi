@@ -6,8 +6,8 @@ class ColaboradorBuscarCommand(Command):
         # self.relatorio_template.gerar_relatorio()
         print("buscando colaborador")
         id = input("id do colaborador a ser encontrado: ")
-        id = int(id)
         try:
+            id = int(id)
             colaborador = sistema.repositorio_colaborador.readColaborador(id)
             
             texto = ""

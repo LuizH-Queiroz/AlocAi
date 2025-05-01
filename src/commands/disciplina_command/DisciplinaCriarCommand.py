@@ -7,8 +7,12 @@ class DisciplinaCriarCommand(Command):
         print("criando disciplina")
 
         nome = input("nome: ")
-        id = int(input("id: "))
+        id = input("id: ")
         turnos = input("Turnos: ")
 
-        disciplina = Disciplina(nome, id, [t.strip() for t in turnos.split(',')])
-        sistema.repositorio_disciplina.createDisciplina(disciplina)
+        try:
+            disciplina = Disciplina(nome, int(id), [t.strip() for t in turnos.split(',')])
+            sistema.repositorio_disciplina.createDisciplina(disciplina)
+        except Exception as e:
+            print(f"Erro ao criar disciplina: {e}")
+            input("Pressione Enter para continuar...")

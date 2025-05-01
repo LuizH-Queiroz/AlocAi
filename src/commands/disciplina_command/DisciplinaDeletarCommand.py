@@ -5,9 +5,9 @@ class DisciplinaDeletarCommand(Command):
     def execute(self, sistema):
         print("deletando disciplina")
                     
-        id = int(input("id da disciplina a ser editada: "))
+        id = input("id da disciplina a ser editada: ")
         try:
-            sistema.repositorio_disciplina.deleteDisciplina(id)
+            sistema.repositorio_disciplina.deleteDisciplina(int(id))
             print(f"Disciplina de id {id} deletada com sucesso")
         except Exception as e:
             print("Falha em deletar disciplina")

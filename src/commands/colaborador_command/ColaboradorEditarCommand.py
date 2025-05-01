@@ -7,8 +7,8 @@ class ColaboradorEditarCommand(Command):
         # self.relatorio_template.gerar_relatorio()
         sistema.tela.set_conteudo("editando colaborador")
         id = input("id do colaborador a ser editado: ")
-        id = int(id)
         try:
+            id = int(id)
             colaborador = sistema.repositorio_colaborador.readColaborador(id)
 
             if colaborador:

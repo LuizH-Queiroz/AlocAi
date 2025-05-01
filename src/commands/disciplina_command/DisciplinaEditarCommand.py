@@ -6,11 +6,10 @@ class DisciplinaEditarCommand(Command):
     def execute(self, sistema):
         print("editando disciplina")
 
-        id = int(input("id da disciplina a ser editada: "))
-        id = int(id)
+        id = input("id da disciplina a ser editada: ")
         try:
-            pass
-            disciplina = self.repositorio_disciplina.readDisciplina(id)
+            
+            disciplina = self.repositorio_disciplina.readDisciplina(int(id))
 
             if disciplina:
                 print(f"ID: {disciplina.getId()}")
