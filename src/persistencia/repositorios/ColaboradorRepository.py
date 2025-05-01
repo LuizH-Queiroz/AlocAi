@@ -20,16 +20,25 @@ class ColaboradorRepository:
             
 
     def createColaborador(self, colaborador):
-        self._colaboradorDAO.create(colaborador)
+        try:
+            self._colaboradorDAO.create(colaborador)
+        except Exception as e:
+            print(f'>> Erro ao criar colaborador: {e}')
 
     def deleteColaborador(self, id: int):
         self._colaboradorDAO.delete(id)
 
     def readColaborador(self, id: int):
-        return self._colaboradorDAO.read(id)
+        try:
+            return self._colaboradorDAO.read(id)
+        except Exception as e:
+            print(f'>> Erro ao ler colaborador de id {id}: {e}')
 
     def readAllColaborador(self):
         return self._colaboradorDAO.readAll()
 
     def updateColaborador(self, id: int, novosDados):
-        self._colaboradorDAO.update(id, novosDados)
+        try:
+            self._colaboradorDAO.update(id, novosDados)
+        except Exception as e:
+            print(f'>> Erro ao atualizar colaborador de id {id}: {e}')

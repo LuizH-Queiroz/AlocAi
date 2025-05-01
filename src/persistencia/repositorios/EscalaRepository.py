@@ -54,16 +54,25 @@ class EscalaRepository:
             print(f">> Erro ao carregar escala mais recente: {e}")
 
     def createEscala(self, escala):
-        self._escalaDAO.create(escala)
+        try:
+            self._escalaDAO.create(escala)
+        except Exception as e:
+            print(f'>> Erro ao criar escala: {e}')
 
     def deleteEscala(self):
-        self._escalaDAO.delete()
+        try:
+            self._escalaDAO.delete()
+        except Exception as e:
+            print(f'>> Erro ao deletar escala: {e}')
 
     def readEscala(self):
         return self._escalaDAO.read()
 
     def updateEscala(self, novosDados):
-        self._escalaDAO.update(novosDados)
+        try:
+            self._escalaDAO.update(novosDados)
+        except Exception as e:
+            print(f'>> Erro ao atualizar escala: {e}')
 
     def getMementoEscala(self):
         return self._escalaDAO.read()
@@ -76,7 +85,11 @@ class EscalaRepository:
 
     def setIndexMemento(self, index):
         self._curr_memento = index
-        self._escalaDAO.setMemento(self._memento_lista[self._curr_memento])
+
+        try:
+            self._escalaDAO.setMemento(self._memento_lista[self._curr_memento])
+        except Exception as e:
+            print(f'>> Erro ao mudar Memento: {e}')
 
     def previousMemento(self):
         if not self._memento_lista or self._curr_memento == 0:

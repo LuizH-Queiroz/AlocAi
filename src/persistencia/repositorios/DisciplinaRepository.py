@@ -20,16 +20,25 @@ class DisciplinaRepository:
             
 
     def createDisciplina(self, disciplina):
-        self._disciplinaDAO.create(disciplina)
+        try:
+            self._disciplinaDAO.create(disciplina)
+        except Exception as e:
+            print(f'>> Erro ao criar disciplina: {e}')
 
     def deleteDisciplina(self, id: int):
         self. _disciplinaDAO.delete(id)
 
     def readDisciplina(self, id: int):
-        return self. _disciplinaDAO.read(id)
+        try:
+            return self. _disciplinaDAO.read(id)
+        except Exception as e:
+            print(f'>> Erro ao ler disciplina de id {id}: {e}')
 
     def readAllDisciplina(self):
         return self. _disciplinaDAO.readAll()
 
     def updateDisciplina(self, id: int, novosDados):
-        self. _disciplinaDAO.update(id, novosDados)
+        try:
+            self. _disciplinaDAO.update(id, novosDados)
+        except Exception as e:
+            print(f'>> Erro ao atualizar disciplina de id {id}: {e}')
