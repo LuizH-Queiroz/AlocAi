@@ -14,13 +14,56 @@ Certifique-se de ter o Python instalado, assim como as dependências necessária
 
 Para rodar o projeto, execute o seguinte comando no terminal:
 ```bash
-python3 src/sistema_escala.py
+cd src/
+python3 sistema_escala.py
 ```
 
-## Diagrama de Casos de Uso
+## Diagrama C4: nível 1
 
 <p align="center">
-  <img src="docs/casosdeuso.png" alt="Diagrama de Casos de Uso" width="400">
+  <img src="docs/nivel_1.png" alt="Diagrama C4: nível 1">
+</p>
+
+## Diagrama C4: nível 2
+
+<p align="center">
+  <img src="docs/nivel_2.png" alt="Diagrama C4: nível 2">
+</p>
+
+## Diagrama C4: nível 3 - Comandos
+
+<p align="center">
+  <img src="docs/comandos.png" alt="Diagrama C4: nível 3 - Comandos">
+</p>
+
+## Diagrama C4: nível 3 - Persistencia
+
+<p align="center">
+  <img src="docs/persistencia.png" alt="Diagrama C4: nível 3 - Persistencia">
+</p>
+
+## Diagrama C4: nível 3 - Relatório
+
+<p align="center">
+  <img src="docs/template.png" alt="Diagrama C4: nível 3 - Relatório">
+</p>
+
+## Diagrama C4: nível 3 - Sistema
+
+<p align="center">
+  <img src="docs/sistemaStrategy.png" alt="Diagrama C4: nível 3 - Sistema">
+</p>
+
+## Diagrama C4: nível 3 - SolverAdapter
+
+<p align="center">
+  <img src="docs/adapter.png" alt="Diagrama C4: nível 3 - SolverAdapter">
+</p>
+
+## Diagrama C4: nível 3 - UI
+
+<p align="center">
+  <img src="docs/UI.png" alt="Diagrama C4: nível 3 - UI">
 </p>
 
 ## Diagrama de Classes
