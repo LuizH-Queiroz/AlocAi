@@ -96,3 +96,22 @@ Motivo: Implementa o CRUD diretamente sobre a fonte de dados
 Utilizado para: operações diretas sobre os dados.
 Classes que implementam:
 - src/persistencia/DAOs/*.py
+
+9. SINGLETON
+-----------------------------------------------------------
+Forma: (não representado graficamente)  
+Cor: (não aplicável)  
+Motivo: Garante que apenas **uma instância** da classe exista durante a execução do sistema,  
+        evitando inconsistência de dados e garantindo um ponto único de acesso.  
+Utilizado para: evitar múltiplas instâncias conflitantes de objetos centrais e sensíveis, como  
+                acesso a dados (DAOs e Repositórios).  
+Classes que implementam:
+- src/persistencia/repositorios/ColaboradorRepository.py  
+- src/persistencia/repositorios/DisciplinaRepository.py  
+- src/persistencia/repositorios/EscalaRepository.py  
+- src/persistencia/DAOs/RAM_escala_DAO.py  
+- src/persistencia/DAOs/CSV_escala_DAO.py  
+- src/persistencia/DAOs/CSV_disciplina_DAO.py  
+- src/persistencia/DAOs/CSV_colaborador_DAO.py  
+- src/persistencia/DAOs/RAM_disciplina_DAO.py  
+- src/persistencia/DAOs/RAM_colaborador_DAO.py 
