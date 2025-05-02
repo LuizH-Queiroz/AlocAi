@@ -1,0 +1,98 @@
+===========================================================
+PADRÕES DE PROJETO UTILIZADOS – DOCUMENTAÇÃO VISUAL
+===========================================================
+
+1. FACTORY
+-----------------------------------------------------------
+Forma: folder
+Cor:  #FCE5CD (laranja claro)
+Motivo: Utilizado para centralizar a criação de objetos complexos,
+        promovendo encapsulamento da lógica de instanciamento.
+Utilizado para instanciar: comandos, UIs, adapters, etc.
+Classes que implementam:
+- src/ui/UIFactory.py
+- src/solvers/AdapterFactory.py
+- serc/persistencia/DAOFactories/DAOFactory.py
+- src/persistencia/persistenciaFactories/PersistenciaFactory.py
+- src/commands/commandFactory.py
+- src/commands/escala_command/EscalaCommandFactory.py
+- src/commands/disciplina_command/DisciplinaCommandFactory.py
+- src/commands/colaborador_command/ColaboradorCommandFactory.py
+
+2. STRATEGY
+-----------------------------------------------------------
+Forma: roundedbox
+Cor:  #D9EAD3 (verde claro)
+Motivo: Permite alternar dinamicamente o comportamento de partes
+        do sistema, como os fluxos de UI ou sistemas principais.
+Utilizado para: definir variantes de comportamento executável.
+Classes que implementam:
+- src/sistema/sistema.py
+- src/ui/UIInterface.py
+- src/solvers/Solver.py
+
+3. TEMPLATE
+-----------------------------------------------------------
+Forma: diamond
+Cor:  #FFF2CC (amarelo claro)
+Motivo: Define o esqueleto de um algoritmo em uma superclasse
+        permitindo que subclasses personalizem etapas específicas.
+Utilizado para: estrutura de geração de relatórios.
+Classes que implementam:
+- src/relatorio/RelatorioTemplate.py
+
+4. ADAPTER
+-----------------------------------------------------------
+Forma: component
+Cor:  #D0E0E3 (azul acinzentado)
+Motivo: Isola o sistema de dependências externas, adaptando
+        a comunicação com solvers externos.
+Utilizado para: conversão de chamadas internas para externas.
+Classes que implementam:
+- src/solvers/SolverAdapterMIP.py
+
+5. MEMENTO
+-----------------------------------------------------------
+Forma: cylinder
+Cor:  #B6D7A8 (verde médio)
+Motivo: Permite armazenar e restaurar estados anteriores da escala,
+        sem violar o encapsulamento.
+Utilizado para: salvar histórico de versões da escala.
+Classes que implementam:
+- src/persistencia/DAOS/RAM_escala_DAO.py
+- src/persistencia/DAOS/CSV_escala_DAO.py
+
+6. COMMAND
+-----------------------------------------------------------
+Forma: hexagon
+Cor:  #B4A7D6 (roxo acinzentado)
+Motivo: Encapsula requisições do usuário como objetos, permitindo
+        parametrização e histórico de comandos.
+Utilizado para: executar ações do usuário em cada tela.
+Classes que implementam:
+- src/commands/Command.py
+- src/commands/colaborador_command/*.py
+- src/commands/disciplina_command/*.py
+- src/commands/escala_command/*.py
+
+7. REPOSITORY
+-----------------------------------------------------------
+Forma: hexagon
+Cor:  #A2C4C9 (azul esverdeado)
+Motivo: Abstrai a lógica de acesso a dados, atuando como ponte
+        entre o domínio e a camada de persistência.
+Utilizado para: acesso a dados de entidades como Professor, Escala e Disciplina.
+Classes que implementam:
+- src/persistencia/repositorios/ColaboradorRepository.py
+- src/persistencia/repositorios/DisciplinaRepository.py
+- src/persistencia/repositorios/EscalaRepository.py
+
+8. DAO (Data Access Object)
+-----------------------------------------------------------
+Forma: cylinder
+Cor:  #C9C9C9 (cinza)
+Motivo: Implementa o CRUD diretamente sobre a fonte de dados
+        (memória, CSV, SQL), desacoplando a lógica de persistência.
+Utilizado para: operações diretas sobre os dados.
+Classes que implementam:
+- src/persistencia/DAOs/*.py
